@@ -1,0 +1,75 @@
+/* Base animation classes */
+[data-animate] {
+  --animate-delay: 0s;
+  --animate-duration: 1s;
+  --animate-offset: 20px;
+}
+
+.animate-init {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Fade animations */
+[data-animate="fade-in"].animate-init {
+  opacity: 0;
+}
+
+[data-animate="fade-up"].animate-init {
+  opacity: 0;
+  transform: translateY(var(--animate-offset));
+}
+
+[data-animate="fade-down"].animate-init {
+  opacity: 0;
+  transform: translateY(calc(var(--animate-offset) * -1));
+}
+
+[data-animate="fade-left"].animate-init {
+  opacity: 0;
+  transform: translateX(var(--animate-offset));
+}
+
+[data-animate="fade-right"].animate-init {
+  opacity: 0;
+  transform: translateX(calc(var(--animate-offset) * -1));
+}
+
+/* Animation triggers */
+[data-animate].animate {
+  animation: animate-in var(--animate-duration) ease-out forwards;
+  animation-delay: var(--animate-delay);
+  pointer-events: auto;
+}
+
+/* Keyframes */
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translate(
+      var(--translate-x, 0),
+      var(--translate-y, 0)
+    );
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* Animation variations */
+[data-animate="fade-up"].animate-init {
+  --translate-y: var(--animate-offset);
+}
+
+[data-animate="fade-down"].animate-init {
+  --translate-y: calc(var(--animate-offset) * -1);
+}
+
+[data-animate="fade-left"].animate-init {
+  --translate-x: var(--animate-offset);
+}
+
+[data-animate="fade-right"].animate-init {
+  --translate-x: calc(var(--animate-offset) * -1);
+} 

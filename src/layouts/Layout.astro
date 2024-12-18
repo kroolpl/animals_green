@@ -1,0 +1,71 @@
+---
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "PetFood Store",
+	description = "Najwyższej jakości karma dla Twojego pupila"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<title>{title} | PetFood Store</title>
+		<link rel="preconnect" href="https://rsms.me/">
+		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Josefin+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<script>
+			document.addEventListener('alpine:init', () => {
+				window.Alpine.store('scroll', {
+					top: window.pageYOffset || 0
+				});
+			});
+		</script>
+	</head>
+	<body 
+		class="min-h-screen bg-white antialiased"
+		x-data
+		x-init="$store.scroll.top = window.pageYOffset"
+		@scroll.window="$store.scroll.top = window.pageYOffset"
+	>
+		<Navigation />
+
+		<main id="swup" class="transition-main">
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	/* Slide transition styles */
+	.transition-main {
+		transition: opacity 300ms;
+	}
+
+	html.is-animating .transition-main {
+		opacity: 0;
+	}
+
+	/* Optional: Add slide effect */
+	html.is-animating.is-leaving .transition-main {
+		transform: translateX(-2%);
+	}
+	
+	html.is-animating.is-rendering .transition-main {
+		transform: translateX(2%);
+	}
+</style>

@@ -1,0 +1,91 @@
+---
+const currentYear = new Date().getFullYear();
+import { Image } from 'astro:assets';
+import Logo from '../assets/images/logo1.svg';
+---
+
+<footer class="bg-neutral relative">
+  <!-- Background decoration with oversized logo -->
+  <div class="absolute inset-0 z-0">
+    <!-- Gradient overlays -->
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 right-0 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+    
+    <!-- Logo background wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center" style="top: -50%">
+      <img 
+        src={Logo.src} 
+        alt=""
+        class="w-[80%] max-w-xl opacity-[0.04] transform -rotate-12"
+        style="min-width: 320px;"
+      />
+    </div>
+  </div>
+
+  <!-- Content wrapper with higher z-index -->
+  <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-3 gap-12">
+      <!-- Brand section -->
+      <div>
+        <div class="flex items-center gap-4">
+          <Image 
+            src={Logo} 
+            alt="Animals Logo"
+            class="w-12 h-12 object-contain"
+            width={48}
+            height={48}
+          />
+          <h2 class="font-display text-2xl font-bold text-primary">
+            Animals Głogów
+          </h2>
+        </div>
+        <p class="text-gray-600 leading-relaxed mt-6 mb-6">
+          Najlepsze karmy i akcesoria dla Twojego pupila w Warszawie.
+        </p>
+        <a
+          href="https://www.facebook.com/p/Animals-Profesjonalny-Sklep-Zoologiczny-61554985716749/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center text-gray-600 hover:text-primary transition-colors"
+        >
+          <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Odwiedź nas na Facebooku
+        </a>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="font-display text-lg font-semibold text-gray-900 mb-4">Kontakt</h3>
+        <address class="not-italic text-gray-600 space-y-2">
+          <p>ul. Polska 5</p>
+          <p>67-200 Głogów</p>
+          <p class="mt-4">
+            <span class="font-medium">Tel:</span> 
+            <a href="tel:886147831" class="hover:text-primary transition-colors">886 147 831</a>
+          </p>
+          <p>
+            <span class="font-medium">Email:</span> 
+            <a href="mailto:kontakt@animals.glogow.pl" class="hover:text-primary transition-colors">kontakt@animals.glogow.pl</a>
+          </p>
+        </address>
+      </div>
+
+      <!-- Opening Hours -->
+      <div>
+        <h3 class="font-display text-lg font-semibold text-gray-900 mb-4">Godziny otwarcia</h3>
+        <div class="text-gray-600 space-y-2">
+          <p>Poniedziałek - Piątek: <span class="font-medium">9:00 - 19:00</span></p>
+          <p>Sobota: <span class="font-medium">10:00 - 16:00</span></p>
+          <p>Niedziela: <span class="font-medium">Zamknięte</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-gray-200 mt-12 pt-8 text-center text-gray-600 text-sm">
+      &copy; {currentYear} Animals. Wszelkie prawa zastrzeżone.
+    </div>
+  </div>
+</footer> 

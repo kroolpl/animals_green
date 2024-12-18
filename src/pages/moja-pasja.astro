@@ -1,0 +1,266 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import ArrowRight from 'astro-heroicons/outline/ArrowRight.astro';
+import Heart from 'astro-heroicons/outline/Heart.astro';
+import AcademicCap from 'astro-heroicons/outline/AcademicCap.astro';
+import UserGroup from 'astro-heroicons/outline/UserGroup.astro';
+import dogBowl from '../assets/images/Dog_bowl.svg';
+
+// Import owner and certificates images
+import ownerImage from '../assets/images/owner.jpg';
+import cert1 from '../assets/images/cert-1.jpg';
+import cert2 from '../assets/images/cert-2.jpg';
+import cert3 from '../assets/images/cert-3.jpg';
+
+const values = [
+  {
+    title: 'Pasja i zaangażowanie',
+    description: 'Każdego dnia z miłością dbam o potrzeby Waszych pupili',
+    icon: Heart
+  },
+  {
+    title: 'Profesjonalna wiedza',
+    description: 'Nieustannie poszerzam wiedzę i kompetencje',
+    icon: AcademicCap
+  },
+  {
+    title: 'Indywidualne podejście',
+    description: 'Każdy pupil jest dla mnie wyjątkowy',
+    icon: UserGroup
+  }
+];
+---
+
+<Layout title="Moja Pasja">
+  <!-- Hero Section -->
+  <section 
+    class="relative py-24 lg:py-32 overflow-hidden" 
+    data-animate="fade-in"
+  >
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 -z-30 bg-[radial-gradient(#4D7C0F_0.5px,transparent_0.5px)] [background-size:16px_16px] opacity-[0.15]"></div>
+
+    <!-- Animated Shapes -->
+    <div class="absolute inset-0 -z-20 overflow-hidden">
+      <div class="absolute top-1/4 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl motion-safe:animate-float-slow"></div>
+      <div class="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full blur-3xl motion-safe:animate-float"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left Column -->
+        <div class="max-w-2xl">
+          <div 
+            class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/5 mb-8" 
+            data-animate="fade-down"
+          >
+            <Heart class="w-5 h-5 text-primary" />
+            <span class="text-sm font-medium text-primary">Nasza Historia</span>
+          </div>
+          
+          <h1 class="font-display text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-6">
+            <span class="block" data-animate="fade-right">
+              Miłość do zwierząt
+            </span>
+            <span class="relative block mt-2" data-animate="fade-right" style="--animate-delay: 0.2s">
+              <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent italic">
+                i zdrowego żywienia
+              </span>
+            </span>
+          </h1>
+
+          <p 
+            class="text-xl text-gray-600 leading-relaxed mb-8" 
+            data-animate="fade-right"
+            style="--animate-delay: 0.3s"
+          >
+            Odkryj historię naszej pasji do zapewniania najlepszej jakości karmy dla Twoich czworonożnych przyjaciół.
+          </p>
+
+          <!-- Stats -->
+          <div 
+            class="grid grid-cols-3 gap-8 py-8 border-t border-gray-200/30"
+            data-animate="fade-up"
+            style="--animate-delay: 0.4s"
+          >
+            {[
+              { number: '10+', label: 'Lat doświadczenia' },
+              { number: '100+', label: 'Przeszkolonych właścicieli' },
+              { number: '1000+', label: 'Zadowolonych pupili' }
+            ].map((stat) => (
+              <div>
+                <p class="text-2xl font-bold text-primary mb-1">{stat.number}</p>
+                <p class="text-sm text-gray-600">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right Column - Hero Image -->
+        <div 
+          class="relative lg:block"
+          data-animate="fade-left"
+          style="--animate-delay: 0.3s"
+        >
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-2xl"></div>
+          <div class="relative">
+            <Image 
+              src={dogBowl} 
+              alt="Nasza pasja do zdrowego żywienia"
+              class="w-full h-auto transform hover:scale-102 transition-transform duration-500 max-w-sm mx-auto lg:max-w-none"
+              width={600}
+              height={500}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Owner Section -->
+  <section class="relative py-24 bg-neutral/50">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Content -->
+        <div data-animate="fade-right">
+          <span class="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            O właścicielce
+          </span>
+          
+          <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
+            Z miłości do 
+            <span class="text-primary italic">zwierząt</span>
+          </h2>
+
+          <div class="space-y-6 text-gray-600 font-body">
+            <p class="text-lg leading-relaxed">
+              Od kiedy pamiętam, miałam bzika na punkcie zwierząt – w dzieciństwie opiekowałam się kundelkiem, a teraz moją wierną towarzyszką jest Nuka, owczarek belgijski, z którym spędzam każdy dzień od 6 lat.
+            </p>
+            <p class="text-lg leading-relaxed">
+              Skończyłam zootechnikę we Wrocławiu i od 10 lat zajmuję się tym zawodowo, to więcej niż praca, to pasja!
+            </p>
+            <p class="text-lg leading-relaxed">
+              W moim sklepie znajdziesz super karmy i akcesoria – wszystko starannie wybrane. Doradzam też za darmo, jeśli chodzi o żywienie zwierzaków. Zapraszam do mojego sklepu na Starym Mieście w Głogowie!
+            </p>
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div 
+          class="relative"
+          data-animate="fade-left"
+          style="--animate-delay: 0.2s"
+        >
+          <div class="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-3xl"></div>
+          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+            <Image 
+              src={ownerImage}
+              alt="Właścicielka sklepu ANIMALS"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              width={600}
+              height={800}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section class="relative py-24 bg-neutral">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Certyfikaty i kwalifikacje
+        </h2>
+        <p class="text-lg text-gray-600">
+          Nieustannie poszerzam swoją wiedzę, aby zapewnić najlepszą opiekę i doradztwo dla Waszych pupili
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {[cert1, cert2, cert3].map((cert, index) => (
+          <div 
+            class="relative group"
+            data-animate="fade-up"
+            style={`--animate-delay: ${0.1 + index * 0.1}s`}
+          >
+            <div class="relative rounded-2xl overflow-hidden shadow-lg">
+              <Image 
+                src={cert}
+                alt={`Certyfikat ${index + 1}`}
+                class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+                width={400}
+                height={300}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="relative py-24 bg-neutral/50">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Moje wartości
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {values.map((value, index) => (
+          <div 
+            class="relative group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300"
+            data-animate="fade-up"
+            style={`--animate-delay: ${0.1 + index * 0.1}s`}
+          >
+            <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+              <value.icon class="w-6 h-6" />
+            </div>
+            <h3 class="font-display text-xl font-bold text-gray-900 mb-3">
+              {value.title}
+            </h3>
+            <p class="text-gray-600">
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="relative py-24 bg-neutral">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+          Moja misja
+        </h2>
+        <p class="text-xl text-gray-600 leading-relaxed mb-12">
+          W ANIMALS chodzi o coś więcej niż tylko karmy i zabawki. Chcę pomagać Wam budować silną więź z Waszymi pupilami. Każdy produkt w moim sklepie wybieram z myślą o zdrowiu, komforcie i radości Waszych zwierzaków.
+        </p>
+        <p class="font-display text-xl italic text-primary">
+          Z miłości do zwierząt,
+          <br />
+          Magdalena Radziejewska
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { setupAnimationObserver } from '../utils/animate-on-scroll';
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupAnimationObserver);
+  } else {
+    setupAnimationObserver();
+  }
+</script> 

@@ -1,0 +1,488 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CheckCircle from 'astro-heroicons/outline/CheckCircle.astro';
+import Heart from 'astro-heroicons/solid/Heart.astro';
+import ShoppingBag from 'astro-heroicons/outline/ShoppingBag.astro';
+import ArrowRight from 'astro-heroicons/outline/ArrowRight.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import storeImage1 from '../assets/images/pet-store-1.jpg';
+import storeImage2 from '../assets/images/pet-store-2.jpg';
+import storeImage3 from '../assets/images/pet-store-3.jpg';
+import product1 from '../assets/images/product-1.jpg';
+import product2 from '../assets/images/product-2.jpg';
+import product3 from '../assets/images/product-3.jpg';
+import heroImage from '../assets/images/hero.jpg';
+import Logo from '../assets/images/logo1.svg';
+import carniLogo from '../assets/images/brands/carnilogo.png';
+import britLogo from '../assets/images/brands/logo_brit.png';
+import panMieskoLogo from '../assets/images/brands/panmiesko.jpeg';
+import powerLogo from '../assets/images/brands/power-logo_200x64-120x38.webp';
+
+const features = [
+  {
+    title: 'Naturalne składniki',
+    description: 'Wszystkie nasze karmy zawierają wyłącznie naturalne składniki, bez sztucznych dodatków.',
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Zbilansowana dieta',
+    description: 'Receptury opracowane przez ekspertów ds. żywienia zwierząt.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    title: 'Świeże dostawy',
+    description: 'Regularne dostawy zapewniają świeżość każdej partii karmy.',
+    icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+  }
+];
+---
+
+<Layout title="Strona główna">
+  <!-- Hero Section -->
+  <section 
+    class="relative min-h-[90vh] flex items-center overflow-hidden"
+    data-animate="fade-in"
+  >
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 -z-30 bg-[radial-gradient(#4D7C0F_0.5px,transparent_0.5px)] [background-size:16px_16px] opacity-[0.15]"></div>
+
+    <!-- Hero Background Image with Overlay -->
+    <div class="absolute inset-0 -z-20">
+      <Image 
+        src={heroImage}
+        alt="Hero background"
+        class="w-full h-full object-cover scale-110 opacity-10"
+        quality={100}
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+    </div>
+
+    <!-- Animated Logo -->
+    <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] opacity-5">
+        <Image 
+          src={Logo} 
+          alt="ANIMALS Logo"
+          class="w-full h-full motion-safe:animate-float-slow"
+          width={600}
+          height={600}
+        />
+      </div>
+      <div class="absolute -bottom-1/4 -left-1/4 w-[800px] h-[800px] opacity-5">
+        <Image 
+          src={Logo} 
+          alt="ANIMALS Logo"
+          class="w-full h-full motion-safe:animate-float"
+          width={800}
+          height={800}
+        />
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left Column -->
+        <div class="max-w-2xl">
+          <!-- Badge -->
+          <div 
+            class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
+            data-animate="fade-down"
+          >
+            <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+            <span class="font-body">Profesjonalny Sklep Zoologiczny</span>
+          </div>
+          
+          <!-- Heading -->
+          <h1 class="font-display text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900 leading-[1.15] mb-8">
+            <span 
+              class="block"
+              data-animate="fade-right"
+            >
+              Zdrowe i szczęśliwe
+            </span>
+            <span 
+              class="relative block mt-2"
+              data-animate="fade-right"
+              style="--animate-delay: 0.2s"
+            >
+              <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent italic">
+                zwierzęta
+              </span>
+            </span>
+          </h1>
+
+          <!-- Description -->
+          <p 
+            class="text-xl text-gray-700 font-body leading-relaxed max-w-xl"
+            data-animate="fade-right"
+            style="--animate-delay: 0.3s"
+          >
+            Oferujemy starannie wyselekcjonowaną karmę premium i profesjonalne doradztwo dla zdrowia i szczęścia Twojego zwierzaka.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div 
+            class="mt-10 flex flex-col sm:flex-row gap-4"
+            data-animate="fade-up"
+            style="--animate-delay: 0.4s"
+          >
+            <a 
+              href="/produkty"
+              class="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-xl text-white overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <div class="absolute inset-0 w-full h-full transition-all duration-300 group-hover:scale-105 bg-gradient-to-r from-primary via-primary-dark to-primary"></div>
+              <div class="relative flex items-center justify-center space-x-2">
+                <span>Zobacz produkty</span>
+                <ArrowRight class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </div>
+            </a>
+            <a
+              href="/kontakt"
+              class="group inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-xl text-primary bg-white/90 backdrop-blur-sm border-2 border-primary/10 hover:border-primary/30 hover:bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg space-x-2"
+            >
+              <span>Skontaktuj się</span>
+              <ArrowRight class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          <!-- Trust Indicators -->
+          <div 
+            class="mt-16 grid grid-cols-3 gap-6 border-t border-gray-200/30 pt-8"
+            data-animate="fade-up"
+            style="--animate-delay: 0.5s"
+          >
+            {[
+              { icon: CheckCircle, text: 'Najwyższa jakość' },
+              { icon: Heart, text: 'Profesjonalne doradztwo' },
+              { icon: ShoppingBag, text: 'Szeroki wybór' }
+            ].map((item) => (
+              <div class="group flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/5 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/10">
+                  <item.icon class="w-5 h-5" />
+                </div>
+                <span class="font-medium text-gray-600 group-hover:text-primary transition-colors duration-300">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right Column - Hero Image -->
+        <div 
+          class="relative hidden lg:block"
+          data-animate="fade-left"
+          style="--animate-delay: 0.3s"
+        >
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-2xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <Image 
+              src={heroImage} 
+              alt="Hero"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              quality={100}
+            />
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- About Section -->
+  <section 
+    class="py-32 overflow-hidden bg-neutral/50"
+    data-animate="fade-in"
+  >
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Content -->
+        <div 
+          class="relative order-2 lg:order-1"
+          data-animate="fade-right"
+        >
+          <div class="absolute -left-4 top-0 w-20 h-20 bg-accent-200 rounded-full opacity-20 blur-2xl"></div>
+          
+          <span class="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            O sklepie
+          </span>
+          
+          <h2 class="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight"> 
+            <span class="text-primary ">ANIMALS</span>
+            <br />to więcej niż sklep
+          </h2>
+          
+          <div class="space-y-6 text-gray-600 font-body text-lg">
+            <p class="leading-relaxed">
+              Opieram się na pasji i doświadczeniu – pomagam właścicielom zwierząt wybierać karmy i akcesoria najlepiej odpowiadające potrzebom ich pupili.
+            </p>
+            <p class="leading-relaxed">
+              Oferuję produkty wyłącznie od sprawdzonych producentów, by zapewnić Twojemu zwierzakowi zdrowie, komfort i radość każdego dnia.
+            </p>
+          </div>
+
+          <!-- Values Grid -->
+          <div class="mt-12 grid sm:grid-cols-2 gap-8">
+            <div class="flex gap-4 items-start group">
+              <div class="w-12 h-12 rounded-xl bg-earth-100 text-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <CheckCircle class="w-6 h-6" />
+              </div>
+              <div>
+                <h4 class="font-display text-xl font-bold text-gray-900 mb-2">Najwyższa jakość</h4>
+                <p class="text-gray-600 leading-relaxed">Starannie wybieram produkty, które spełniają najwyższe standardy jakości.</p>
+              </div>
+            </div>
+            
+            <div class="flex gap-4 items-start group">
+              <div class="w-12 h-12 rounded-xl bg-accent-100 text-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <Heart class="w-6 h-6 text-red-500 motion-safe:animate-heartbeat" />
+              </div>
+              <div>
+                <h4 class="font-display text-xl font-bold text-gray-900 mb-2">Z miłości do zwierząt</h4>
+                <p class="text-gray-600 leading-relaxed">Każdą decyzję podejmuję myśląc o dobrostanie Twoich pupili.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="mt-12">
+            <a 
+              href="/kontakt"
+              class="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium rounded-xl text-white bg-primary hover:bg-primary-dark transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 space-x-2"
+            >
+              <span>Odwiedź nas</span>
+              <ArrowRight class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div 
+          class="relative order-1 lg:order-2"
+          data-animate="fade-left"
+          style="--animate-delay: 0.2s"
+        >
+          <div class="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-3xl"></div>
+          <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+            <Image 
+              src={storeImage1}
+              alt="Wnętrze sklepu ANIMALS"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              quality={90}
+            />
+            <!-- Overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            
+            <!-- Stats overlay -->
+            <div class="absolute bottom-0 left-0 right-0 p-8 grid grid-cols-3 gap-4 text-white backdrop-blur-sm bg-black/20">
+              <div>
+                <p class="text-2xl font-bold mb-1">10+</p>
+                <p class="text-sm opacity-80">Lat doświadczenia</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold mb-1">500+</p>
+                <p class="text-sm opacity-80">Zadowolonych klientów</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold mb-1">100%</p>
+                <p class="text-sm opacity-80">Satysfakcji</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Features Section -->
+ <section 
+  class="py-32 bg-neutral"
+  data-animate="fade-in"
+>
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div 
+      class="max-w-2xl mx-auto text-center"
+      data-animate="fade-down"
+    >
+      <h2 class="text-base font-body font-medium text-primary uppercase tracking-wider">Dlaczego my?</h2>
+      <p class="mt-2 font-display text-3xl font-bold text-gray-900 sm:text-4xl">
+        Dlaczego warto nam zaufać?
+      </p>
+      <p class="mt-4 text-lg text-gray-600 font-body">
+        Stawiamy na jakość i zadowolenie naszych czworonożnych klientów
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-8 md:grid-cols-3">
+      {features.map((feature, index) => (
+        <div 
+          class="relative group"
+          data-animate="fade-up"
+          style={`--animate-delay: ${0.1 + index * 0.1}s`}
+        >
+          <div class="h-full p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}/>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+              {feature.title}
+            </h3>
+            <p class="font-body text-gray-600 leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+  <!-- Add this section before the Stats Section -->
+  <section 
+    class="py-24 bg-neutral/50"
+    data-animate="fade-in"
+  >
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+      <!-- Header -->
+      <div 
+        class="text-center max-w-2xl mx-auto mb-12"
+        data-animate="fade-down"
+      >
+        <span class="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          Przykładowe produkty
+        </span>
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900">
+          Wyselekcjonowane z myślą o Twoim pupilu
+        </h2>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          {
+            name: "Pan Mięsko",
+            category: "Dla psów",
+            image: "/images/product-1.jpg",
+            weight: "5kg",
+            tag: "Bez zbóż"
+          },
+          {
+            name: "CARNILOVE",
+            category: "Dla kotów",
+            image: "/images/product-2.jpg",
+            weight: "3kg",
+            tag: "Premium"
+          },
+          {
+            name: "Power of Nature",
+            category: "Dla kotów",
+            image: "/images/product-3.jpg",
+            weight: "8kg",
+            tag: "Bio"
+          },
+        ].map((product, index) => (
+          <div 
+            class="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+            data-animate="fade-up"
+            style={`--animate-delay: ${0.1 + index * 0.1}s`}
+          >
+            <!-- Image container with fixed aspect ratio -->
+            <div class="relative w-full pt-[75%]"> <!-- 4:3 aspect ratio -->
+              <Image 
+                src={product.image === '/images/product-1.jpg' ? product1 : 
+                     product.image === '/images/product-2.jpg' ? product2 : product3}
+                alt={product.name}
+                class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                width={800}
+                height={600} 
+                quality={85}
+              />
+              <!-- Category badge -->
+              <div class="absolute top-4 left-4">
+                <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-primary text-sm font-medium">
+                  {product.category}
+                </span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-4">
+                <h3 class="font-display text-lg font-bold text-gray-900">
+                  {product.name}
+                </h3>
+                <span class="inline-flex px-2.5 py-1 rounded-lg bg-accent-100 text-primary-dark text-sm">
+                  {product.tag}
+                </span>
+              </div>
+
+           
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Brands Section -->
+      <section class="py-16 bg-neutral/50 border-t border-gray-200/30">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+          <div 
+            class="text-center max-w-2xl mx-auto mb-12"
+            data-animate="fade-down"
+          >
+            <span class="text-sm font-medium text-gray-600">
+              Zaufani producenci
+            </span>
+            <h2 class="mt-2 font-display text-2xl font-bold text-gray-900">
+              Współpracujemy z najlepszymi markami
+            </h2>
+          </div>
+
+          <div 
+            class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center"
+            data-animate="fade-up"
+          >
+            {[
+              { src: carniLogo, alt: "Carni Logo" },
+              { src: britLogo, alt: "Brit Logo" },
+              { src: panMieskoLogo, alt: "Pan Mięsko Logo" },
+              { src: powerLogo, alt: "Power Logo" },
+            ].map((brand) => (
+              <div class="relative w-full max-w-[200px] h-20 grayscale hover:grayscale-0 transition-all duration-300">
+                <Image
+                  src={brand.src}
+                  alt={brand.alt}
+                  class="w-full h-full object-contain"
+                  width={200}
+                  height={80}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Button -->
+      
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-24 bg-neutral">
+    <!-- ... rest of the testimonials section ... -->
+  </section>
+</Layout>
+
+<script>
+  import { setupAnimationObserver } from '../utils/animate-on-scroll';
+  
+  // Run immediately if the DOM is already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupAnimationObserver);
+  } else {
+    setupAnimationObserver();
+  }
+</script>
