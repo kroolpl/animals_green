@@ -4,20 +4,10 @@ excerpt: 'Poznaj najważniejsze kryteria wyboru karmy dla młodego psa i dowiedz
 category: 'Psy'
 readTime: '5 min'
 date: 2024-03-15
-image: '/images/blog-1.jpg'
+image: 'dogFood'
 ---
-import { Image } from 'astro:assets';
-import dogFood from '../../assets/images/dog-food.jpg';
 
-# Jak wybrać odpowiednią karmę dla szczeniaka?
-
-<Image 
-  src={dogFood} 
-  alt="Karma dla szczeniaka" 
-  width={800} 
-  height={400}
-  class="rounded-xl shadow-lg"
-/>
+![Karma dla szczeniaka](/src/assets/images/dog-food.jpg)
 
 Wybór odpowiedniej karmy dla szczeniaka to jedna z najważniejszych decyzji, jaką podejmiesz jako opiekun młodego psa. Prawidłowe żywienie w okresie wzrostu ma kluczowy wpływ na rozwój i przyszłe zdrowie Twojego pupila.
 
