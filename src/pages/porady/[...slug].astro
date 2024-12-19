@@ -8,16 +8,21 @@ import 'astro-breadcrumbs/breadcrumbs.css';
 import Clock from 'astro-heroicons/outline/Clock.astro';
 import Logo from '../../assets/images/logo1.svg';
 import ArrowRight from 'astro-heroicons/outline/ArrowRight.astro';
+import BlogPostImage from '../../components/BlogPostImage.astro';
 import dogFood from '../../assets/images/dog-food.jpg';
 import polki from '../../assets/images/polki.jpg';
+import psy from '../../assets/images/2psy.jpg';
+import storeImage from '../../assets/images/pet-store-1.jpg';
 
 // Add at the top with other imports
 type ImageKey = keyof typeof imageMapping;
 
 // Create an image mapping
 const imageMapping = {
-  polki: polki,
-  dogFood: dogFood
+  'dog-food': dogFood,
+  'polki': polki,
+  '2psy': psy,
+  'pet-store-1': storeImage
 } as const;
 
 export async function getStaticPaths() {
@@ -133,38 +138,76 @@ const recommendedPosts = allPosts
         </div>
 
         <!-- Recommended Articles -->
-        <div class="mt-16">
-          <h3 class="font-display text-2xl font-bold text-gray-900 mb-8">
-            Polecane artykuły
-          </h3>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recommendedPosts.map((recommendedPost: CollectionEntry<'blog'>) => (
+        <section class="mt-24 mb-16">
+          <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div 
+              class="text-center max-w-2xl mx-auto mb-12"
+              data-animate="fade-down"
+            >
+              <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                Przeczytaj również
+              </h2>
+              <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {recommendedPosts.map((recommendedPost: CollectionEntry<'blog'>) => (
+                <a 
+                  href={`/porady/${recommendedPost.slug}`}
+                  class="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                  <!-- Image Container -->
+                  <div class="relative w-full pt-[66%] overflow-hidden">
+                    <BlogPostImage 
+                      imageKey={recommendedPost.data.image}
+                      alt={recommendedPost.data.title}
+                      class="group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <!-- Category Badge -->
+                    <div class="absolute top-4 left-4">
+                      <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-primary text-sm font-medium shadow-sm">
+                        {recommendedPost.data.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Content -->
+                  <div class="p-6">
+                    <!-- Title -->
+                    <h3 class="font-display text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      {recommendedPost.data.title}
+                    </h3>
+
+                    <!-- Excerpt -->
+                    <p class="text-gray-600 line-clamp-2 mb-4">
+                      {recommendedPost.data.excerpt}
+                    </p>
+
+                    <!-- Read More Link -->
+                    <div class="inline-flex items-center text-primary font-medium group/link bg-primary/5 px-4 py-2 rounded-lg">
+                      <span class="mr-2">Czytaj artykuł</span>
+                      <ArrowRight class="w-4 h-4 transform transition-transform duration-300 group-hover/link:translate-x-1" />
+                    </div>
+                  </div>
+
+                  <!-- Hover Overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
+              ))}
+            </div>
+
+            <!-- View All Link -->
+            <div class="text-center mt-12">
               <a 
-                href={`/porady/${recommendedPost.slug}`}
-                class="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                href="/porady"
+                class="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-xl text-primary bg-primary/10 hover:bg-primary hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 space-x-2"
               >
-                <div class="relative w-full pt-[56.25%]">
-                  <Image 
-                    src={imageMapping[recommendedPost.data.image as ImageKey] || dogFood}
-                    alt={recommendedPost.data.title}
-                    class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    width={800}
-                    height={450}
-                    quality={80}
-                  />
-                </div>
-                <div class="p-4">
-                  <span class="text-sm text-primary font-medium">
-                    {recommendedPost.data.category}
-                  </span>
-                  <h4 class="font-display font-bold text-gray-900 mt-2 group-hover:text-primary transition-colors line-clamp-2">
-                    {recommendedPost.data.title}
-                  </h4>
-                </div>
+                <span>Zobacz wszystkie artykuły</span>
+                <ArrowRight class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
-            ))}
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </article>
@@ -215,5 +258,15 @@ const recommendedPosts = allPosts
     .grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+  }
+
+  /* Additional styles for recommended articles */
+  .group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+  }
+  
+  /* Gradient overlay for images */
+  .group:hover .absolute.inset-0.bg-gradient-to-t {
+    opacity: 1;
   }
 </style> 

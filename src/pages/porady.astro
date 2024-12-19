@@ -1,34 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import ArrowRight from 'astro-heroicons/outline/ArrowRight.astro';
-import BookOpen from 'astro-heroicons/outline/BookOpen.astro';
-import Clock from 'astro-heroicons/outline/Clock.astro';
-import dogBooks from '../assets/images/dog_books.svg';
-import dogFood from '../assets/images/dog-food.jpg';
+import BlogPostImage from '../components/BlogPostImage.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import polki from '../assets/images/polki.jpg';
+import Clock from 'astro-heroicons/outline/Clock.astro';
+import ArrowRight from 'astro-heroicons/outline/ArrowRight.astro';
+import BookOpen from 'astro-heroicons/outline/BookOpen.astro';
+import dogBooks from '../assets/images/dog_books.svg';
+import { Image } from 'astro:assets';
 
-// Create image mapping
-type ImageKey = keyof typeof imageMapping;
-
-const imageMapping = {
-  polki: polki,
-  dogFood: dogFood
-} as const;
-
-// Get all blog posts and sort by date
 const posts = await getCollection('blog');
-console.log('Found posts:', posts.length);
 
 const seoDescription = "Porady i artykuły od ekspertów sklepu zoologicznego ANIMALS w Głogowie. Dowiedz się więcej o prawidłowym żywieniu i pielęgnacji zwierząt domowych.";
 ---
 
-<Layout 
-  title="Porady - Sklep zoologiczny ANIMALS Głogów" 
-  description={seoDescription}
->
+<Layout title="Porady - Sklep zoologiczny ANIMALS Głogów" description={seoDescription}>
   <!-- Hero Section -->
   <section 
     class="relative py-24 lg:py-32 overflow-hidden" 
@@ -74,24 +60,6 @@ const seoDescription = "Porady i artykuły od ekspertów sklepu zoologicznego AN
           >
             Odkryj praktyczne porady dotyczące żywienia, pielęgnacji i zdrowia Twoich czworonożnych przyjaciół.
           </p>
-
-          <!-- Stats -->
-          <div 
-            class="grid grid-cols-3 gap-8 py-8 border-t border-gray-200/30"
-            data-animate="fade-up"
-            style="--animate-delay: 0.4s"
-          >
-            {[
-              { number: '50+', label: 'Artykułów' },
-              { number: '10+', label: 'Lat doświadczenia' },
-              { number: '1000+', label: 'Zadowolonych pupili' }
-            ].map((stat) => (
-              <div>
-                <p class="text-2xl font-bold text-primary mb-1">{stat.number}</p>
-                <p class="text-sm text-gray-600">{stat.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
         <!-- Right Column - Hero Image -->
@@ -128,13 +96,9 @@ const seoDescription = "Porady i artykuły od ekspertów sklepu zoologicznego AN
             style={`--animate-delay: ${0.1 + index * 0.1}s`}
           >
             <div class="relative w-full pt-[56.25%]">
-              <Image 
-                src={imageMapping[post.data.image as ImageKey] || dogFood}
+              <BlogPostImage 
+                imageKey={post.data.image}
                 alt={post.data.title}
-                class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                width={800}
-                height={450}
-                quality={80}
               />
               <div class="absolute top-4 left-4">
                 <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-sm text-primary text-sm font-medium shadow-sm">

@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import dogFood from '../assets/images/dog-food.jpg';
+import polki from '../assets/images/polki.jpg';
+import psy from '../assets/images/2psy.jpg';
+import storeImage from '../assets/images/pet-store-1.jpg';
+
+// Add console.log to debug
+console.log('Available images:', {
+  'dog-food': dogFood,
+  'polki': polki,
+  '2psy': psy,
+  'pet-store-1': storeImage
+});
+
+const imageMap = {
+  'dog-food': dogFood,
+  'polki': polki,
+  '2psy': psy,
+  'pet-store-1': storeImage
+} as const;
+
+type Props = {
+  imageKey: keyof typeof imageMap;
+  alt: string;
+  width?: number;
+  height?: number;
+};
+
+const { imageKey, alt, width = 800, height = 450 } = Astro.props;
+
+// Add console.log to debug
+console.log('Received imageKey:', imageKey);
+console.log('Mapped image:', imageMap[imageKey]);
+---
+
+<Image 
+  src={imageMap[imageKey] || dogFood}
+  alt={alt}
+  width={width}
+  height={height}
+  class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+  quality={80}
+/> 
