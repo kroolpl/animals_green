@@ -25,9 +25,10 @@ type Props = {
   alt: string;
   width?: number;
   height?: number;
+  className?: string;
 };
 
-const { imageKey, alt, width = 800, height = 450 } = Astro.props;
+const { imageKey, alt, width = 800, height = 450, className = '' } = Astro.props;
 
 // Add console.log to debug
 console.log('Received imageKey:', imageKey);
@@ -39,6 +40,6 @@ console.log('Mapped image:', imageMap[imageKey]);
   alt={alt}
   width={width}
   height={height}
-  class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+  class={`absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ${className}`}
   quality={80}
 /> 

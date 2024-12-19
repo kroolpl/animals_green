@@ -23,6 +23,9 @@ import powerLogo from '../assets/images/brands/power-logo_200x64-120x38.webp';
 import polki from '../assets/images/polki.jpg';
 import dogFood from '../assets/images/dog-food.jpg';
 import psy from '../assets/images/psy.jpg';
+import cat1 from '../assets/images/testimonials/cat1.jpg';
+import dog1 from '../assets/images/testimonials/dog1.jpg';
+import dog2 from '../assets/images/testimonials/dog2.jpg';
 
 const features = [
   {
@@ -514,21 +517,21 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
               {
                 name: "Reksio",
                 type: "Golden Retriever, 3 lata",
-                image: "/images/testimonials/dog1.jpg",
+                image: dog1,
                 quote: "Hau! Najlepsze gryzaki ever! Przeżułem już ze 100, a ten sklep ciągle ma nowe. Obsługa zawsze ma dla mnie smakołyk. 15/10 machających ogonów!",
                 rating: 5
               },
               {
                 name: "Luna",
                 type: "Kot brytyjski, wybredna",
-                image: "/images/testimonials/cat1.jpg",
-                quote: "Mrrr... Początkowo byłam sceptyczna (jak to kot), ale ta karma... *mruczy intensywnie* Jest acceptable. A to wiele znaczy w kocim języku.",
+                image: cat1,
+                quote: "Mrrr... Początkowo byłam sceptyczna (jak to kot), ale ta karma... *mruczy intensywnie* Jest nieeeezła. A to wiele znaczy w kocim języku.",
                 rating: 4.5
               },
               {
                 name: "Max",
                 type: "Labrador, żarłok",
-                image: "/images/testimonials/dog2.jpg",
+                image: dog2,
                 quote: "JEDZENIEJEDZENIEJEDZENIE! Przepraszam, emocje... Wszystko tutaj jest pyszne! Nawet rzeczy, których podobno nie powinienem jeść! Hau!",
                 rating: 5
               }
@@ -538,10 +541,16 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
                 data-animate="fade-up"
               >
                 <div class="flex items-center space-x-4 mb-4">
-                  <div class="relative w-16 h-16 rounded-full overflow-hidden bg-primary/10">
-                    <div class="absolute inset-0 flex items-center justify-center text-2xl">
-                      {testimonial.name[0]}
-                    </div>
+                  <div class="relative w-16 h-16 rounded-full overflow-hidden">
+                    <Image 
+                      src={testimonial.image}
+                      alt={`${testimonial.name} - ${testimonial.type}`}
+                      class="w-full h-full object-cover"
+                      width={64}
+                      height={64}
+                      format="webp"
+                      quality={80}
+                    />
                   </div>
                   <div>
                     <h3 class="font-display font-bold text-gray-900">
