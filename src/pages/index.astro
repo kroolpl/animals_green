@@ -5,6 +5,7 @@ import Heart from 'astro-heroicons/solid/Heart.astro';
 import ShoppingBag from 'astro-heroicons/outline/ShoppingBag.astro';
 import ArrowRight from 'astro-heroicons/outline/ArrowRight.astro';
 import { Image } from 'astro:assets';
+import { optimizeImage } from '../utils/image-utils';
 
 // Import images
 import storeImage1 from '../assets/images/pet-store-1.jpg';
@@ -286,7 +287,10 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
               src={storeImage1}
               alt="Wnętrze sklepu ANIMALS"
               class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              quality={90}
+              width={600}
+              height={800}
+              quality={75}
+              format="webp"
             />
             <!-- Overlay gradient -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -381,21 +385,21 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
           {
             name: "Pan Mięsko",
             category: "Dla psów",
-            image: "/images/product-1.jpg",
+            image: product1,
             weight: "5kg",
             tag: "Bez zbóż"
           },
           {
             name: "CARNILOVE",
             category: "Dla kotów",
-            image: "/images/product-2.jpg",
+            image: product2,
             weight: "3kg",
             tag: "Premium"
           },
           {
             name: "Power of Nature",
             category: "Dla kotów",
-            image: "/images/product-3.jpg",
+            image: product3,
             weight: "8kg",
             tag: "Bio"
           },
@@ -408,13 +412,13 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
             <!-- Image container with fixed aspect ratio -->
             <div class="relative w-full pt-[75%]"> <!-- 4:3 aspect ratio -->
               <Image 
-                src={product.image === '/images/product-1.jpg' ? product1 : 
-                     product.image === '/images/product-2.jpg' ? product2 : product3}
+                src={product.image}
                 alt={product.name}
                 class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                width={800}
-                height={600} 
-                quality={85}
+                width={400}
+                height={300}
+                quality={75}
+                format="webp"
               />
               <!-- Category badge -->
               <div class="absolute top-4 left-4">
@@ -471,8 +475,10 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
                   src={brand.src}
                   alt={brand.alt}
                   class="w-full h-full object-contain"
-                  width={200}
-                  height={80}
+                  width={150}
+                  height={60}
+                  quality={80}
+                  format="webp"
                 />
               </div>
             ))}
