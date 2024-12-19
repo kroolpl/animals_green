@@ -4,6 +4,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation.astro';
 import Logo from '../assets/images/logo1.svg';
+import heroImage from '../assets/images/hero-image.jpg';
 
 interface Props {
 	title: string;
@@ -60,6 +61,20 @@ const canonicalURL = Astro.site
 			}}
 		/>
 		<ViewTransitions />
+		
+		<!-- Preload critical images -->
+		<link 
+			rel="preload" 
+			href={Logo.src} 
+			as="image" 
+			type="image/svg+xml"
+		/>
+		<link 
+			rel="preload"
+			href={heroImage.src}
+			as="image"
+			type="image/webp"
+		/>
 	</head>
 	<body class="min-h-screen bg-white antialiased">
 		<Navigation />
