@@ -26,4 +26,6 @@ export default defineConfig({
       optimize: true
     })
   ],
+  site: 'https://animals.glogow.pl',
+  base: '/',
 });
