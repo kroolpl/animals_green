@@ -54,7 +54,7 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
 >
   <!-- Hero Section -->
   <section 
-    class="relative min-h-[90vh] flex items-center overflow-hidden py-16 sm:py-20 lg:py-24"
+    class="relative min-h-[90vh] flex items-center overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20 lg:py-24"
     data-animate="fade-in"
   >
     <!-- Background Pattern -->
@@ -105,7 +105,7 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
         <div class="max-w-2xl mx-auto lg:mx-0">
           <!-- Badge -->
           <div 
-            class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8"
+            class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 sm:mb-8"
             data-animate="fade-down"
           >
             <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
@@ -308,8 +308,8 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
                 <p class="text-sm opacity-80">Lat doświadczenia</p>
               </div>
               <div>
-                <p class="text-2xl font-bold mb-1">500+</p>
-                <p class="text-sm opacity-80">Zadowolonych klient��w</p>
+                <p class="text-2xl font-bold mb-1">Setki</p>
+                <p class="text-sm opacity-80">Zadowolonych klientów</p>
               </div>
               <div>
                 <p class="text-2xl font-bold mb-1">100%</p>
@@ -367,7 +367,123 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
 </section>
 
   <!-- Add this section before the Stats Section -->
-  <section 
+ 
+
+      <!-- Testimonials Section -->
+      <section class="py-20 sm:py-28 lg:py-36 bg-neutral">
+        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Header -->
+          <div 
+            class="text-center max-w-2xl mx-auto mb-12"
+            data-animate="fade-down"
+          >
+            <span class="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              Co mówią nasi czworonożni klienci
+            </span>
+            <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900">
+              Szczere opinie prosto od naszych klientów
+            </h2>
+            <p class="mt-4 text-lg text-gray-600">
+              (Tłumaczone z języka hau-hau i miau-miau)
+            </p>
+          </div>
+
+          <!-- Testimonials Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Reksio",
+                type: "Golden Retriever, 3 lata",
+                image: dog1,
+                quote: "Hau! Najlepsze gryzaki ever! Przeżułem już ze 100, a ten sklep ciągle ma nowe. Obsługa zawsze ma dla mnie smakołyk. 15/10 machających ogonów!",
+                rating: 5
+              },
+              {
+                name: "Luna",
+                type: "Kot brytyjski, wybredna",
+                image: cat1,
+                quote: "Mrrr... Początkowo byłam sceptyczna (jak to kot), ale ta karma... *mruczy intensywnie* Jest nieeeezła. A to wiele znaczy w kocim języku.",
+                rating: 4.5
+              },
+              {
+                name: "Max",
+                type: "Labrador, żarłok",
+                image: dog2,
+                quote: "JEDZENIEJEDZENIEJEDZENIE! Przepraszam, emocje... Wszystko tutaj jest pyszne! Nawet rzeczy, których podobno nie powinienem jeść! Hau!",
+                rating: 5
+              }
+            ].map((testimonial) => (
+              <div 
+                class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+                data-animate="fade-up"
+              >
+                <div class="flex items-center space-x-4 mb-4">
+                  <div class="relative w-16 h-16 rounded-full overflow-hidden">
+                    <Image 
+                      src={testimonial.image}
+                      alt={`${testimonial.name} - ${testimonial.type}`}
+                      class="w-full h-full object-cover"
+                      width={64}
+                      height={64}
+                      format="webp"
+                      quality={80}
+                    />
+                  </div>
+                  <div>
+                    <h3 class="font-display font-bold text-gray-900">
+                      {testimonial.name}
+                    </h3>
+                    <p class="text-sm text-gray-600">
+                      {testimonial.type}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  {/* Rating Stars */}
+                  <div class="flex items-center space-x-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg 
+                        class={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+
+                <blockquote class="text-gray-600 italic mb-4">
+                  "{testimonial.quote}"
+                </blockquote>
+
+                <div class="flex items-center justify-end text-sm text-gray-500">
+                  <span class="flex items-center">
+                    {testimonial.name === "Luna" ? "🐱" : "🐕"} Zweryfikowana opinia
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Fun Disclaimer -->
+          <p 
+            class="text-center text-sm text-gray-500 mt-8"
+            data-animate="fade-up"
+          >
+            * Opinie mogły zostać nieco ubarwione w tłumaczeniu ze zwierzęcego na ludzki. 
+            Żaden pies ani kot nie został zmuszony do napisania opinii. Zapłacono w chrupkach i kociej miętce.
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA Button -->
+      
+    </div>
+  </section>
+
+   <section 
     id="produkty"
     class="py-20 sm:py-28 lg:py-36 bg-neutral/50"
     data-animate="fade-in"
@@ -492,120 +608,6 @@ const seoDescription = "Sklep zoologiczny ANIMALS w Głogowie - Twój lokalny sk
           </div>
         </div>
       </section>
-
-      <!-- Testimonials Section -->
-      <section class="py-20 sm:py-28 lg:py-36 bg-neutral">
-        <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <!-- Header -->
-          <div 
-            class="text-center max-w-2xl mx-auto mb-12"
-            data-animate="fade-down"
-          >
-            <span class="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Co mówią nasi czworonożni klienci
-            </span>
-            <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900">
-              Szczere opinie prosto od naszych klientów
-            </h2>
-            <p class="mt-4 text-lg text-gray-600">
-              (Tłumaczone z języka hau-hau i miau-miau)
-            </p>
-          </div>
-
-          <!-- Testimonials Grid -->
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Reksio",
-                type: "Golden Retriever, 3 lata",
-                image: dog1,
-                quote: "Hau! Najlepsze gryzaki ever! Przeżułem już ze 100, a ten sklep ciągle ma nowe. Obsługa zawsze ma dla mnie smakołyk. 15/10 machających ogonów!",
-                rating: 5
-              },
-              {
-                name: "Luna",
-                type: "Kot brytyjski, wybredna",
-                image: cat1,
-                quote: "Mrrr... Początkowo byłam sceptyczna (jak to kot), ale ta karma... *mruczy intensywnie* Jest nieeeezła. A to wiele znaczy w kocim języku.",
-                rating: 4.5
-              },
-              {
-                name: "Max",
-                type: "Labrador, żarłok",
-                image: dog2,
-                quote: "JEDZENIEJEDZENIEJEDZENIE! Przepraszam, emocje... Wszystko tutaj jest pyszne! Nawet rzeczy, których podobno nie powinienem jeść! Hau!",
-                rating: 5
-              }
-            ].map((testimonial) => (
-              <div 
-                class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
-                data-animate="fade-up"
-              >
-                <div class="flex items-center space-x-4 mb-4">
-                  <div class="relative w-16 h-16 rounded-full overflow-hidden">
-                    <Image 
-                      src={testimonial.image}
-                      alt={`${testimonial.name} - ${testimonial.type}`}
-                      class="w-full h-full object-cover"
-                      width={64}
-                      height={64}
-                      format="webp"
-                      quality={80}
-                    />
-                  </div>
-                  <div>
-                    <h3 class="font-display font-bold text-gray-900">
-                      {testimonial.name}
-                    </h3>
-                    <p class="text-sm text-gray-600">
-                      {testimonial.type}
-                    </p>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  {/* Rating Stars */}
-                  <div class="flex items-center space-x-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <svg 
-                        class={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
-                        fill="currentColor" 
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                      </svg>
-                    ))}
-                  </div>
-                </div>
-
-                <blockquote class="text-gray-600 italic mb-4">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                <div class="flex items-center justify-end text-sm text-gray-500">
-                  <span class="flex items-center">
-                    {testimonial.name === "Luna" ? "🐱" : "🐕"} Zweryfikowana opinia
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <!-- Fun Disclaimer -->
-          <p 
-            class="text-center text-sm text-gray-500 mt-8"
-            data-animate="fade-up"
-          >
-            * Opinie mogły zostać nieco ubarwione w tłumaczeniu ze zwierzęcego na ludzki. 
-            Żaden pies ani kot nie został zmuszony do napisania opinii. Zapłacono w chrupkach i kociej miętce.
-          </p>
-        </div>
-      </section>
-
-      <!-- CTA Button -->
-      
-    </div>
-  </section>
 </Layout>
 
 <script>
