@@ -8,7 +8,7 @@ import UserGroup from 'astro-heroicons/outline/UserGroup.astro';
 import dogBowl from '../assets/images/Dog_bowl.svg';
 
 // Import owner and certificates images
-import ownerImage from '../assets/images/owner.jpg';
+import ownerImage from '../assets/images/founder2.jpg';
 import cert1 from '../assets/images/cert-1.jpg';
 import cert2 from '../assets/images/cert-2.jpg';
 import cert3 from '../assets/images/cert-3.jpg';
@@ -154,13 +154,14 @@ const values = [
           style="--animate-delay: 0.2s"
         >
           <div class="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-3xl"></div>
-          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl max-w-md mx-auto">
             <Image 
               src={ownerImage}
               alt="Właścicielka sklepu ANIMALS"
               class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               width={600}
               height={800}
+              quality={90}
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
           </div>
