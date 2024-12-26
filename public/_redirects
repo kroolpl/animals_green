@@ -1,0 +1,9 @@
+# Redirect domain aliases to primary domain
+http://www.animals.glogow.pl/* https://animals.glogow.pl/:splat 301!
+https://www.animals.glogow.pl/* https://animals.glogow.pl/:splat 301!
+
+# Force HTTPS
+http://animals.glogow.pl/* https://animals.glogow.pl/:splat 301!
+
+# Optional: Handle trailing slashes
+https://animals.glogow.pl/* https://animals.glogow.pl/:splat 301 
